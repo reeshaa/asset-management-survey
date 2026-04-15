@@ -1,9 +1,9 @@
 .app-shell {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-grow: 1;
-  padding: 40px 24px;
+  padding: 24px 24px 40px;
 }
 
 .quiz-card {
