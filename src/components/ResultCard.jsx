@@ -47,51 +47,86 @@ function ResultCard({ lensResults, onRestart }) {
   const activeGrades = new Set(Object.values(lensResults).map((result) => result.grade))
   const gradeMap = Object.fromEntries(gradeLevels.map((level) => [level.key, level]))
 
+  const lensDefinitions = {
+    capabilities: {
+      label: 'Lens One',
+      title: 'Capabilities',
+      description:
+        'Do you have the right people, systems and processes for what you need to deliver?',
+      icon: '⚙️',
+    },
+    performance: {
+      label: 'Lens Two',
+      title: 'Performance',
+      description:
+        'Can you demonstrate with evidence that what you do delivers the outcomes your community expects?',
+      icon: '📈',
+    },
+    assurance: {
+      label: 'Lens Three',
+      title: 'Assurance',
+      description:
+        'Can you prove that risks are understood, managed and proportionate to what matters?',
+      icon: '🛡️',
+    },
+  }
+
+  const lensOrder = ['capabilities', 'performance', 'assurance']
+
   return (
     <section className="quiz-card result-card">
       <span className="badge">Finished</span>
-      <h1>Maturity grades</h1>
+      <h1>Reflection results</h1>
       <p className="result-intro">
-        These are your three main grades — one for each assessment lens.
+        These results reveal how much effort or engineering your organisation may
+        need in each area. They are a reflection, not a final maturity score.
       </p>
 
-      <div className="grade-scale">
-        <div className="grade-scale__title">Grade key</div>
-        <div className="grade-scale__list">
-          {gradeLevels.map((level) => (
-            <span
-              key={level.key}
-              className={`grade-chip grade-chip--${level.variant} ${
-                activeGrades.has(level.key) ? 'grade-chip--active' : ''
-              }`}
-            >
-              {level.key}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="lens-summary">
-        {Object.entries(lensResults).map(([lens, result]) => {
+      <div className="result-grid">
+        {lensOrder.map((lens) => {
+          const result = lensResults[lens]
+          const definition = lensDefinitions[lens]
           const variant = gradeMap[result.grade].variant
+
           return (
-            <div key={lens} className={`lens-card lens-card--${variant}`}>
-              <div className="lens-card__top">
+            <article key={lens} className={`lens-panel lens-panel--${variant} lens-panel--${lens}`}>
+              <div className="lens-panel__header">
+                <span className="lens-panel__icon">{definition.icon}</span>
                 <div>
-                  <div className="lens-card__title">
-                    {lens.charAt(0).toUpperCase() + lens.slice(1)} lens
-                  </div>
-                  <div className="lens-card__subtitle">Grade</div>
+                  <div className="lens-panel__small-label">{definition.label}</div>
+                  <h2 className="lens-panel__title">{definition.title}</h2>
                 </div>
+              </div>
+
+              <p className="lens-panel__desc">{definition.description}</p>
+
+              <div className="lens-panel__scale">
+                <div className="lens-panel__scale-row">
+                  {gradeLevels.map((level) => (
+                    <span
+                      key={level.key}
+                      className={`scale-segment scale-segment--${level.variant} ${
+                        level.key === result.grade ? 'scale-segment--active' : ''
+                      }`}
+                    />
+                  ))}
+                </div>
+                <div className="scale-labels">
+                  <span>Innocent</span>
+                  <span>Excellent</span>
+                </div>
+              </div>
+
+              <div className="lens-panel__footer">
                 <span className={`grade-pill grade-pill--${variant}`}>
                   {result.grade}
                 </span>
+                <div className="lens-panel__score">
+                  <span className="score-value">{result.score.toFixed(2)}</span>
+                  <span className="score-label">Weighted score</span>
+                </div>
               </div>
-              <div className="lens-card__meta">
-                <span>{gradeMap[result.grade].range}</span>
-                <span>{result.score.toFixed(2)} weighted score</span>
-              </div>
-            </div>
+            </article>
           )
         })}
       </div>

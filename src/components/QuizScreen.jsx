@@ -4,8 +4,10 @@ function QuizScreen({
   totalQuestions,
   selectedOption,
   isAdvancing,
+  readyToSubmit,
   onSelectOption,
   onBack,
+  onSubmit,
 }) {
   return (
     <section className="quiz-card quiz-screen">
@@ -47,7 +49,18 @@ function QuizScreen({
             onClick={onBack}
             disabled={isAdvancing}
           >
-            Back
+            ← Previous
+          </button>
+        )}
+
+        {readyToSubmit && (
+          <button
+            type="button"
+            className="primary-button"
+            onClick={onSubmit}
+            disabled={isAdvancing}
+          >
+            Submit test for results
           </button>
         )}
       </div>

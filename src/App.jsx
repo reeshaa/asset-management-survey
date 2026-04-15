@@ -16,6 +16,7 @@ function App() {
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState(Array(totalQuestions).fill(null))
   const [isAdvancing, setIsAdvancing] = useState(false)
+  const [readyToSubmit, setReadyToSubmit] = useState(false)
   const advanceTimeout = useRef(null)
 
   useEffect(() => {
@@ -50,21 +51,27 @@ function App() {
       return next
     })
     setIsAdvancing(true)
+    setReadyToSubmit(false)
 
     const nextQuestionIndex = currentQuestion + 1
+    const isLastQuestion = currentQuestion === totalQuestions - 1
+
     advanceTimeout.current = setTimeout(() => {
       setIsAdvancing(false)
       advanceTimeout.current = null
-      if (nextQuestionIndex < totalQuestions) {
-        setCurrentQuestion(nextQuestionIndex)
+      if (isLastQuestion) {
+        setReadyToSubmit(true)
       } else {
-        setStep('result')
+        setCurrentQuestion(nextQuestionIndex)
       }
     }, 550)
   }
 
   const goBack = () => {
     if (currentQuestion === 0 || isAdvancing) return
+    if (readyToSubmit) {
+      setReadyToSubmit(false)
+    }
     setCurrentQuestion((index) => index - 1)
   }
 
@@ -74,6 +81,13 @@ function App() {
     setCurrentQuestion(0)
     setAnswers(Array(totalQuestions).fill(null))
     setIsAdvancing(false)
+    setReadyToSubmit(false)
+  }
+
+  const submitQuiz = () => {
+    clearAdvance()
+    setReadyToSubmit(false)
+    setStep('result')
   }
 
   const maxScore = calculateMaxScore(questions)
@@ -91,8 +105,10 @@ function App() {
           totalQuestions={totalQuestions}
           selectedOption={answers[currentQuestion]}
           isAdvancing={isAdvancing}
+          readyToSubmit={readyToSubmit}
           onSelectOption={selectOption}
           onBack={goBack}
+          onSubmit={submitQuiz}
         />
       )}
 
