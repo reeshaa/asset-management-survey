@@ -607,6 +607,16 @@ p {
     gap: 12px;
   }
 
+  .welcome-footer {
+    flex-wrap: wrap;
+  }
+
+  .welcome-footer .subtle-note {
+    margin-left: 0;
+    width: 100%;
+    margin-top: 8px;
+  }
+
   .result-grid {
     grid-template-columns: 1fr;
   }
