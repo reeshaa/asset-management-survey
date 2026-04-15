@@ -60,7 +60,7 @@ function QuizScreen({
             onClick={onSubmit}
             disabled={isAdvancing}
           >
-            Submit test for results
+            Submit
           </button>
         )}
       </div>

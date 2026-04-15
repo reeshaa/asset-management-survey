@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
+import { DNA } from 'react-loader-spinner'
 import { questions } from './data/questions'
 import WelcomeCard from './components/WelcomeCard'
 import QuizScreen from './components/QuizScreen'
@@ -17,12 +18,18 @@ function App() {
   const [answers, setAnswers] = useState(Array(totalQuestions).fill(null))
   const [isAdvancing, setIsAdvancing] = useState(false)
   const [readyToSubmit, setReadyToSubmit] = useState(false)
+  const [isLoadingResult, setIsLoadingResult] = useState(false)
   const advanceTimeout = useRef(null)
+  const resultTimeout = useRef(null)
+  // const loadingInterval = useRef(null)
 
   useEffect(() => {
     return () => {
       if (advanceTimeout.current) {
         clearTimeout(advanceTimeout.current)
+      }
+      if (resultTimeout.current) {
+        clearTimeout(resultTimeout.current)
       }
     }
   }, [])
@@ -87,7 +94,12 @@ function App() {
   const submitQuiz = () => {
     clearAdvance()
     setReadyToSubmit(false)
-    setStep('result')
+    setIsLoadingResult(true)
+    resultTimeout.current = setTimeout(() => {
+      setIsLoadingResult(false)
+      setStep('result')
+      resultTimeout.current = null
+    }, 2800)
   }
 
   const maxScore = calculateMaxScore(questions)
@@ -98,7 +110,7 @@ function App() {
     <main className="app-shell">
       {step === 'welcome' && <WelcomeCard onStart={startQuiz} />}
 
-      {step === 'quiz' && (
+      {step === 'quiz' && !isLoadingResult && (
         <QuizScreen
           question={questions[currentQuestion]}
           currentQuestion={currentQuestion}
@@ -112,7 +124,28 @@ function App() {
         />
       )}
 
-      {step === 'result' && (
+      {isLoadingResult && (
+        <section className="quiz-card loading-card">
+          <span className="badge">Processing</span>
+          <h1>Computing maturity lens results</h1>
+          <p className="result-intro">
+            Calculating your maturity lens score from the responses you provided.
+          </p>
+          <div className="loading-aiwait" aria-label="Loading">
+            <DNA
+              visible={true}
+              height={96}
+              width={96}
+              ariaLabel="dna-loading"
+              wrapperStyle={{ margin: '0 auto' }}
+              wrapperClass="dna-wrapper"
+            />
+            <span className="aiwait-loader-label">Analyzing answers, please wait...</span>
+          </div>
+        </section>
+      )}
+
+      {step === 'result' && !isLoadingResult && (
         <ResultCard
           score={score}
           maxScore={maxScore}
