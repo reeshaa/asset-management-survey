@@ -11,8 +11,7 @@ export function getUserInfo() {
 }
 
 export async function sendQuizData({ answers, score, maxScore, lensResults }) {
-  console.log('Sending quiz data to Google Sheets...', { answers, score, maxScore, lensResults });
-    const userInfo = getUserInfo();
+  const userInfo = getUserInfo();
   const payload = {
     answers,
     score,
@@ -28,6 +27,7 @@ export async function sendQuizData({ answers, score, maxScore, lensResults }) {
 
     await fetch(GOOGLE_SHEET_ENDPOINT, {
       method: 'POST',
+      mode: "no-cors",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
