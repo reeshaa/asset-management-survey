@@ -394,11 +394,12 @@ p {
 .lens-panel__header {
   display: flex;
   align-items: flex-start;
+  text-align: left;
   gap: 40px;
 }
 
 .lens-panel__header div {
-  text-align: center;
+  text-align: left;
 }
 
 .lens-panel__icon {
@@ -778,11 +779,11 @@ p {
 
   .lens-panel {
     min-height: auto;
-    padding: 20px;
+    padding: 28px 20px;
   }
 
   .lens-panel__header {
-    gap: 14px;
+    gap: 24px;
   }
 
   .lens-panel__icon {
