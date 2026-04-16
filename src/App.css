@@ -9,7 +9,7 @@
 
 .aiwait-loader-label {
   font-size: 1.18rem;
-  color: #068ac4;
+  color: var(--accent-alt);
   font-weight: 600;
   margin-top: 10px;
   letter-spacing: 0.01em;
@@ -27,7 +27,7 @@
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
-  background: var(--surface);
+  background: linear-gradient(180deg, rgba(10, 14, 22, 0.96), rgba(5, 8, 16, 0.96));
   border: 1px solid var(--border);
   border-radius: 24px;
   box-shadow: var(--shadow);
@@ -75,7 +75,7 @@
   display: inline-flex;
   padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(6, 138, 196, 0.12);
+  background: rgba(98, 203, 201, 0.12);
   color: var(--accent);
   font-size: 14px;
   font-weight: 700;
@@ -85,7 +85,7 @@
 h1,
 h2 {
   margin: 0;
-  color: var(--text-h);
+  color: var(--text);
 }
 
 h1 {
@@ -132,7 +132,7 @@ p {
 
 .primary-button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
 }
 
 .primary-button:disabled {
@@ -146,7 +146,7 @@ p {
   width: fit-content;
   border: none;
   border-radius: 20px;
-  background: rgba(124, 92, 255, 0.08);
+  background: rgba(98, 203, 201, 0.12);
   color: var(--accent);
   padding: 10px 18px;
   font-size: 0.95rem;
@@ -157,7 +157,7 @@ p {
 }
 
 .secondary-button:hover {
-  background: rgba(124, 92, 255, 0.16);
+  background: rgba(98, 203, 201, 0.22);
   transform: translateY(-1px);
 }
 
@@ -199,7 +199,7 @@ p {
   padding: 16px 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
-  background: rgba(4, 36, 61, 0.85);
+  background: rgba(12, 18, 28, 0.92);
   color: var(--text);
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -210,7 +210,7 @@ p {
 
 .option-button:hover,
 .option-button:focus-visible {
-  border-color: var(--accent);
+  border-color: var(--accent-alt);
   outline: none;
   transform: translateY(-1px);
 }
@@ -222,26 +222,26 @@ p {
 
 .option-button.selected {
   border-color: var(--accent);
-  background: rgba(6, 138, 196, 0.18);
+  background: rgba(98, 203, 201, 0.14);
 }
 
 .option-button.selected-animate {
   animation: selected-pulse 0.55s ease forwards;
-  box-shadow: 0 0 0 0 rgba(6, 138, 196, 0.18);
+  box-shadow: 0 0 0 0 rgba(98, 203, 201, 0.18);
 }
 
 @keyframes selected-pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(124, 92, 255, 0.18);
+    box-shadow: 0 0 0 0 rgba(98, 203, 201, 0.18);
   }
   50% {
     transform: scale(1.02);
-    box-shadow: 0 0 0 18px rgba(124, 92, 255, 0.05);
+    box-shadow: 0 0 0 18px rgba(98, 203, 201, 0.06);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(124, 92, 255, 0);
+    box-shadow: 0 0 0 0 rgba(98, 203, 201, 0);
   }
 }
 
@@ -278,7 +278,7 @@ p {
   width: 124px;
   height: 124px;
   border-radius: 50%;
-  background: rgba(4, 36, 61, 0.95);
+  background: rgba(0, 160, 175, 0.12);
   display: grid;
   place-items: center;
   gap: 6px;
@@ -324,18 +324,18 @@ p {
 }
 
 .lens-panel--capabilities {
-  border-color: rgba(6, 138, 196, 0.28);
-  background: rgba(6, 138, 196, 0.08);
+  border-color: rgba(0, 160, 175, 0.28);
+  background: #001524;
 }
 
 .lens-panel--performance {
-  border-color: rgba(52, 196, 125, 0.28);
-  background: rgba(52, 196, 125, 0.08);
+  border-color: rgba(98, 203, 201, 0.28);
+  background: #00262a;
 }
 
 .lens-panel--assurance {
-  border-color: rgba(241, 138, 59, 0.28);
-  background: rgba(241, 138, 59, 0.08);
+  border-color: rgba(124, 125, 170, 0.28);
+  background: #121121;
 }
 
 .lens-panel__header {
@@ -351,19 +351,24 @@ p {
   place-items: center;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 18px;
-  font-size: 1.3rem;
+}
+
+.lens-panel__icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .lens-panel--capabilities .lens-panel__icon {
-  background: rgba(6, 138, 196, 0.2);
+  background: rgba(0, 160, 175, 0.18);
 }
 
 .lens-panel--performance .lens-panel__icon {
-  background: rgba(52, 196, 125, 0.18);
+  background: rgba(98, 203, 201, 0.14);
 }
 
 .lens-panel--assurance .lens-panel__icon {
-  background: rgba(241, 138, 59, 0.18);
+  background: rgba(124, 125, 170, 0.16);
 }
 
 .lens-panel__small-label {
@@ -371,6 +376,7 @@ p {
   font-size: 0.78rem;
   letter-spacing: 0.16em;
   color: var(--muted);
+  margin-bottom: 8px;
 }
 
 .lens-panel__title {
@@ -393,95 +399,131 @@ p {
 .lens-panel__scale-row {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 6px;
+  gap: 1px;
 }
 
 .scale-segment {
-  height: 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  height: 16px;
+  border-radius: 2px;
+  /* background: rgba(255, 255, 255, 0.08); */
   opacity: 0.6;
   transition: opacity 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .lens-panel--capabilities .scale-segment:nth-child(1) {
-  background: rgba(12, 63, 128, 0.28);
+  background: #012b48;
 }
 
 .lens-panel--capabilities .scale-segment:nth-child(2) {
-  background: rgba(24, 93, 166, 0.28);
+  background: #004275;
 }
 
 .lens-panel--capabilities .scale-segment:nth-child(3) {
-  background: rgba(34, 118, 197, 0.28);
+  background: #016ab5;
 }
 
 .lens-panel--capabilities .scale-segment:nth-child(4) {
-  background: rgba(55, 147, 232, 0.32);
+  background: #23a2fe;
 }
 
 .lens-panel--capabilities .scale-segment:nth-child(5) {
-  background: rgba(98, 184, 251, 0.34);
+  background: #90cffe;
 }
 
 .lens-panel--capabilities .scale-segment:nth-child(6) {
-  background: rgba(179, 231, 255, 0.42);
+  background: #c4edff;
 }
 
 .lens-panel--performance .scale-segment:nth-child(1) {
-  background: rgba(13, 88, 74, 0.28);
+  background: #004e56;
 }
 
 .lens-panel--performance .scale-segment:nth-child(2) {
-  background: rgba(23, 113, 90, 0.28);
+  background: #017683;
 }
 
 .lens-panel--performance .scale-segment:nth-child(3) {
-  background: rgba(42, 144, 113, 0.28);
+  background: #00a1ae;
 }
 
 .lens-panel--performance .scale-segment:nth-child(4) {
-  background: rgba(84, 178, 143, 0.32);
+  background: #35ecfe;
 }
 
 .lens-panel--performance .scale-segment:nth-child(5) {
-  background: rgba(122, 210, 175, 0.34);
+  background: #79f2ff;
 }
 
 .lens-panel--performance .scale-segment:nth-child(6) {
-  background: rgba(181, 243, 214, 0.42);
+  background: #bcf9ff;
 }
 
 .lens-panel--assurance .scale-segment:nth-child(1) {
-  background: rgba(34, 22, 67, 0.28);
+  background: #271f40;
 }
 
 .lens-panel--assurance .scale-segment:nth-child(2) {
-  background: rgba(55, 40, 108, 0.28);
+  background: #382e62;
 }
 
 .lens-panel--assurance .scale-segment:nth-child(3) {
-  background: rgba(77, 64, 138, 0.28);
+  background: #4c4082;
 }
 
 .lens-panel--assurance .scale-segment:nth-child(4) {
-  background: rgba(109, 87, 178, 0.32);
+  background: #8d7fc1;
 }
 
 .lens-panel--assurance .scale-segment:nth-child(5) {
-  background: rgba(137, 115, 212, 0.34);
+  background: #b1a9d5;
 }
 
 .lens-panel--assurance .scale-segment:nth-child(6) {
-  background: rgba(173, 148, 247, 0.42);
+  background: #d8d2eb;
 }
 
 .scale-segment--active {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.24), 0 0 22px rgba(255, 255, 255, 0.16);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  z-index: 2;
+  position: relative;
+  overflow: visible;
+  animation: resultPulse 1.2s ease-in-out infinite;
+}
+
+.scale-segment--active::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 18px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  clip-path: polygon(0 100%, 100% 100%, 50% 0);
+  border-radius: 3px;
+
+  opacity: 0.95;
+  pointer-events: none;
+  animation: indicatorFloat 1.2s ease-in-out infinite;
+}
+
+@keyframes resultPulse {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.08);
+  }
+}
+
+@keyframes indicatorFloat {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.95;
+  }
+  50% {
+    transform: translateX(-50%) translateY(4px);
+    opacity: 1;
+  }
 }
 
 .scale-labels {
@@ -493,71 +535,65 @@ p {
 
 .lens-panel__footer {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
   gap: 14px;
-}
-
-.lens-panel__score {
-  display: grid;
-  gap: 4px;
-  text-align: right;
-  min-width: 120px;
-}
-
-.score-value {
-  color: #ffffff;
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-.score-label {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
 }
 
 .grade-pill {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5px 12px;
-  min-height: 28px;
+  gap: 24px;
+  padding: 8px 8px 12px;
+  min-height: 100px;
+  width: min(90%, 320px);
   line-height: 1;
-  border-radius: 999px;
+  border-radius: 16px;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   letter-spacing: 0.14em;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.06);
+  border: none;
+  background: rgba(255, 255, 255, 0.000);
   color: rgba(255, 255, 255, 0.92);
 }
 
+.grade-pill img {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+.grade-pill__label {
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
 .grade-pill--innocent {
-  background: rgba(4, 56, 59, 0.22);
+  background: rgba(0, 48, 60, 0.22);
 }
 
 .grade-pill--aware {
-  background: rgba(4, 36, 61, 0.24);
+  background: rgba(0, 32, 44, 0.24);
 }
 
 .grade-pill--developing {
-  background: rgba(6, 138, 196, 0.18);
+  background: rgba(0, 160, 175, 0.18);
 }
 
 .grade-pill--competent {
-  background: rgba(30, 26, 50, 0.24);
+  background: rgba(31, 22, 70, 0.24);
 }
 
 .grade-pill--optimising {
-  background: rgba(6, 138, 196, 0.26);
+  background: rgba(87, 81, 149, 0.22);
 }
 
 .grade-pill--excellent {
-  background: rgba(124, 92, 255, 0.22);
+  background: rgba(255, 183, 27, 0.18);
 }
 
 .lens-card__meta {

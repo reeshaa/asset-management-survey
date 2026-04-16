@@ -1,3 +1,13 @@
+import capabilitiesLogo from '../assets/capabilities.png'
+import performanceLogo from '../assets/performance.png'
+import assuranceLogo from '../assets/assurance.png'
+import GradeInnocentLogo from '../assets/grades/1_innocent.png'
+import GradeAwareLogo from '../assets/grades/2_aware.png'
+import GradeDevelopingLogo from '../assets/grades/3_developing.png'
+import GradeCompetentLogo from '../assets/grades/4_competent.png'
+import GradeOptimizingLogo from '../assets/grades/5_optimizing.png'
+import GradeExcellentLogo from '../assets/grades/6_excellent.png'
+
 const gradeLevels = [
   {
     key: 'Innocent',
@@ -44,7 +54,6 @@ const gradeLevels = [
 ]
 
 function ResultCard({ lensResults, onRestart }) {
-  const activeGrades = new Set(Object.values(lensResults).map((result) => result.grade))
   const gradeMap = Object.fromEntries(gradeLevels.map((level) => [level.key, level]))
 
   const lensDefinitions = {
@@ -53,22 +62,31 @@ function ResultCard({ lensResults, onRestart }) {
       title: 'Capabilities',
       description:
         'Do you have the right people, systems and processes for what you need to deliver?',
-      icon: '⚙️',
+      icon: capabilitiesLogo,
     },
     performance: {
       label: 'Lens Two',
       title: 'Performance',
       description:
         'Can you demonstrate with evidence that what you do delivers the outcomes your community expects?',
-      icon: '📈',
+      icon: performanceLogo,
     },
     assurance: {
       label: 'Lens Three',
       title: 'Assurance',
       description:
         'Can you prove that risks are understood, managed and proportionate to what matters?',
-      icon: '🛡️',
+      icon: assuranceLogo,
     },
+  }
+
+  const gradeIcons = {
+    Innocent: GradeInnocentLogo,
+    Aware: GradeAwareLogo,
+    Developing: GradeDevelopingLogo,
+    Competent: GradeCompetentLogo,
+    Optimising: GradeOptimizingLogo,
+    Excellent: GradeExcellentLogo,
   }
 
   const lensOrder = ['capabilities', 'performance', 'assurance']
@@ -76,11 +94,8 @@ function ResultCard({ lensResults, onRestart }) {
   return (
     <section className="quiz-card result-card">
       <span className="badge">Finished</span>
-      <h1>Reflection results</h1>
-      <p className="result-intro">
-        These results reveal how much effort or engineering your organisation may
-        need in each area. They are a reflection, not a final maturity score.
-      </p>
+      <h1>Results</h1>
+      <p className="result-intro"></p>
 
       <div className="result-grid">
         {lensOrder.map((lens) => {
@@ -91,7 +106,9 @@ function ResultCard({ lensResults, onRestart }) {
           return (
             <article key={lens} className={`lens-panel lens-panel--${variant} lens-panel--${lens}`}>
               <div className="lens-panel__header">
-                <span className="lens-panel__icon">{definition.icon}</span>
+                <span className="lens-panel__icon">
+                  <img src={definition.icon} alt={`${definition.title} logo`} />
+                </span>
                 <div>
                   <div className="lens-panel__small-label">{definition.label}</div>
                   <h2 className="lens-panel__title">{definition.title}</h2>
@@ -118,13 +135,10 @@ function ResultCard({ lensResults, onRestart }) {
               </div>
 
               <div className="lens-panel__footer">
-                <span className={`grade-pill grade-pill--${variant}`}>
-                  {result.grade}
+                <span className={`grade-pill `}>
+                  <img src={gradeIcons[result.grade]} alt={`${result.grade} grade`} />
+                  <span className="grade-pill__label">{result.grade}</span>
                 </span>
-                <div className="lens-panel__score">
-                  <span className="score-value">{result.score.toFixed(2)}</span>
-                  <span className="score-label">Weighted score</span>
-                </div>
               </div>
             </article>
           )

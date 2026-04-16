@@ -1,3 +1,4 @@
+import { sendQuizData } from './utils/sheets'
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { DNA } from 'react-loader-spinner'
@@ -95,6 +96,15 @@ function App() {
     clearAdvance()
     setReadyToSubmit(false)
     setIsLoadingResult(true)
+
+    // Send data to Google Sheets (fire and forget)
+    sendQuizData({
+      answers,
+      score: calculateScore(questions, answers),
+      maxScore: calculateMaxScore(questions),
+      lensResults: calculateLensResults(questions, answers),
+    });
+
     resultTimeout.current = setTimeout(() => {
       setIsLoadingResult(false)
       setStep('result')
