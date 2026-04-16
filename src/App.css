@@ -49,6 +49,12 @@
   margin: 0 auto 18px;
 }
 
+@media (max-width: 600px) {
+  .site-logo {
+    width: 160px;
+  }
+}
+
 .welcome-header {
   display: grid;
   gap: 14px;
