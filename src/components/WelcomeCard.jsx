@@ -17,7 +17,7 @@ function WelcomeCard({ onStart }) {
         <button className="primary-button" onClick={onStart}>
           Start Quiz {"→"}
         </button>
-        <p className="small-text subtle-note">Created by Rahul Shenoy</p>
+        <p className="small-text subtle-note">Ideation by Rahul Shenoy</p>
       </div>
     </section>
   )
