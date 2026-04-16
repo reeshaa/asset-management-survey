@@ -1,6 +1,7 @@
 import capabilitiesLogo from '../assets/capabilities.png'
 import performanceLogo from '../assets/performance.png'
 import assuranceLogo from '../assets/assurance.png'
+import auxiliumLogo from '../assets/auxilium.png'
 import GradeInnocentLogo from '../assets/grades/1_innocent.png'
 import GradeAwareLogo from '../assets/grades/2_aware.png'
 import GradeDevelopingLogo from '../assets/grades/3_developing.png'
@@ -93,9 +94,7 @@ function ResultCard({ lensResults, onRestart }) {
 
   return (
     <section className="quiz-card result-card">
-      <span className="badge">Finished</span>
       <h1>Results</h1>
-      <p className="result-intro"></p>
 
       <div className="result-grid">
         {lensOrder.map((lens) => {
@@ -148,6 +147,13 @@ function ResultCard({ lensResults, onRestart }) {
       <button className="primary-button" onClick={onRestart}>
         Restart Quiz
       </button>
+
+      <footer className="result-footer">
+        <a href="https://www.auxilium.co.nz/" target="_blank" rel="noreferrer" className="logo-link">
+          <img src={auxiliumLogo} alt="Auxilium logo" className="footer-logo" />
+        </a>
+        <p className="small-text result-footer-note">Ideation by Rahul Shenoy</p>
+      </footer>
     </section>
   )
 }

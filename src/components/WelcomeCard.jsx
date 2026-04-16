@@ -1,6 +1,11 @@
+import auxiliumLogo from '../assets/auxilium.png'
+
 function WelcomeCard({ onStart }) {
   return (
     <section className="quiz-card welcome-card">
+      <a href="https://www.auxilium.co.nz/" target="_blank" rel="noreferrer">
+        <img src={auxiliumLogo} alt="Auxilium logo" className="site-logo" />
+      </a>
       <div className="welcome-header">
         <span className="badge">Quick check</span>
         <h1>Is your asset management fit for purpose?</h1>
