@@ -3,7 +3,7 @@ import auxiliumLogo from '../assets/auxilium.png'
 function WelcomeCard({ onStart }) {
   return (
     <section className="quiz-card welcome-card">
-      <a href="https://www.auxilium.co.nz/" target="_blank" rel="noreferrer" className="logo-link">
+      <a href="https://www.auxilium.co.nz/" target="_blank" rel="noreferrer">
         <img src={auxiliumLogo} alt="Auxilium logo" className="site-logo" />
       </a>
       <div className="welcome-header">
