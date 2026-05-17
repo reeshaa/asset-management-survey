@@ -6,6 +6,7 @@ import { questions } from './data/questions'
 import WelcomeCard from './components/WelcomeCard'
 import QuizScreen from './components/QuizScreen'
 import ResultCard from './components/ResultCard'
+import Footer from './components/Footer'
 import {
   calculateLensResults,
   calculateMaxScore,
@@ -117,7 +118,8 @@ function App() {
   const lensResults = calculateLensResults(questions, answers)
 
   return (
-    <main className="app-shell">
+    <div className="app-root">
+      <main className="app-shell">
       {step === 'welcome' && <WelcomeCard onStart={startQuiz} />}
 
       {step === 'quiz' && !isLoadingResult && (
@@ -163,7 +165,9 @@ function App() {
           onRestart={restartQuiz}
         />
       )}
-    </main>
+      </main>
+      <Footer />
+    </div>
   )
 }
 
