@@ -22,7 +22,17 @@ function WelcomeCard({ onStart }) {
         <button className="primary-button" onClick={onStart}>
           Start Quiz {"→"}
         </button>
-        <p className="small-text subtle-note">Ideation by Rahul Shenoy</p>
+        <p className="small-text subtle-note">
+          Ideation by{' '}
+          <a
+            href="https://www.linkedin.com/in/rahulshenoyyy/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="name-link"
+          >
+            Rahul Shenoy
+          </a>
+        </p>
       </div>
     </section>
   )

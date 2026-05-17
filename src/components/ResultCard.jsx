@@ -152,7 +152,17 @@ function ResultCard({ lensResults, onRestart }) {
         <a href="https://www.auxilium.co.nz/" target="_blank" rel="noreferrer" className="logo-link">
           <img src={auxiliumLogo} alt="Auxilium logo" className="footer-logo" />
         </a>
-        <p className="small-text result-footer-note">Ideation by Rahul Shenoy</p>
+        <p className="small-text result-footer-note">
+          Ideation by{' '}
+          <a
+            href="https://www.linkedin.com/in/rahulshenoyyy/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="result-footer-link"
+          >
+            Rahul Shenoy
+          </a>
+        </p>
       </footer>
     </section>
   )

@@ -106,6 +106,17 @@
   text-align: center;
 }
 
+.result-footer-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.result-footer-link:hover,
+.result-footer-link:focus {
+  text-decoration: underline;
+}
+
 .welcome-lead {
   font-size: 1.05rem;
   line-height: 1.7;
@@ -162,6 +173,22 @@ p {
   font-size: 0.95rem;
   color: var(--muted);
   margin-top: 6px;
+}
+
+.name-link,
+.result-footer-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.name-link:hover,
+.name-link:focus,
+.result-footer-link:hover,
+.result-footer-link:focus {
+  text-decoration: underline;
+  background: rgba(98, 203, 201, 0.12);
+  border-radius: 999px;
 }
 
 .subtle-note {
